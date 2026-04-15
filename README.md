@@ -1,4 +1,4 @@
-# MCS-AI-Applied-AI-Block-5
+# MCS-AI - Waste Classification system 
 
 ## Project Overview
 
