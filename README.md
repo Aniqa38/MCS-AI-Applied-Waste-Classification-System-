@@ -1,13 +1,13 @@
 # MCS-AI-Applied-AI-Block-5
 
-## 📌 Project Overview
+## Project Overview
 
 This project is a real-life application of Artificial Intelligence for **waste management classification** using a Convolutional Neural Network (CNN).
 The model classifies different types of waste into categories to support smart recycling and environmental sustainability.
 
 ---
 
-## 🧠 Model Description
+## Model Description
 
 * Built using **Deep Learning (CNN)**
 * Trained on labeled waste images
@@ -15,7 +15,7 @@ The model classifies different types of waste into categories to support smart r
 
 ---
 
-## 📂 Dataset
+##  Dataset
 
 This project uses the **TrashNet dataset**:
 
@@ -32,7 +32,7 @@ https://www.kaggle.com/datasets/feyzazkefe/trashnet
 
 ---
 
-## ⚙️ Features
+##  Features
 
 * Image classification using CNN
 * Model performance evaluation (accuracy, loss, confusion matrix)
@@ -41,7 +41,7 @@ https://www.kaggle.com/datasets/feyzazkefe/trashnet
 
 ---
 
-## 📊 Results
+##  Results
 
 The project includes:
 
@@ -53,7 +53,7 @@ The project includes:
 
 ---
 
-## 🚀 How to Run
+##  How to Run
 
 ### 1. Clone the repository
 
@@ -88,7 +88,7 @@ Use `test.jpg` or your own image to check predictions.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 * `app.py` → Model training / prediction
 * `streamlit_app.py` → Web interface
@@ -98,7 +98,7 @@ Use `test.jpg` or your own image to check predictions.
 
 ---
 
-## 🌍 Applications
+##  Applications
 
 * Smart waste segregation
 * Recycling systems
@@ -106,7 +106,7 @@ Use `test.jpg` or your own image to check predictions.
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
-Developed as part of Applied AI coursework.
+Developed as part of Applied AI coursework.MCS AI ( Artificial Intelligence) 
 
