@@ -1,65 +1,48 @@
-# MCS-AI - Waste Classification system 
+# ♻️ Waste Classification with Deep Learning
 
-## Project Overview
+A computer vision system that sorts photos of waste into six recycling categories, built with **PyTorch** using transfer learning on a pre-trained **ResNet-18**, with a **Streamlit** web app for live predictions.
 
-This project is a real-life application of Artificial Intelligence for **waste management classification** using a Convolutional Neural Network (CNN).
-The model classifies different types of waste into categories to support smart recycling and environmental sustainability.
+Developed as part of the Applied AI module, MSc Artificial Intelligence, University of Greater Manchester.
 
----
-
-## Model Description
-
-* Built using **Deep Learning (CNN)**
-* Trained on labeled waste images
-* Capable of predicting waste categories from input images
+![Confusion matrix](figure7_confusion_matrix.png)
 
 ---
 
-##  Dataset
+## Results
 
-This project uses the **TrashNet dataset**:
+| Metric | Score |
+|---|---|
+| Test accuracy | **76.32%** |
+| Weighted F1-score | 0.76 |
+| Best class | Cardboard (F1 0.89) |
+| Hardest class | Trash (F1 0.35, the smallest class) |
 
-https://www.kaggle.com/datasets/feyzazkefe/trashnet
+Full per-class results are in [`classification_report.txt`](classification_report.txt).
 
-### Classes:
-
-* Cardboard
-* Glass
-* Metal
-* Paper
-* Plastic
-* Trash
-
----
-
-##  Features
-
-* Image classification using CNN
-* Model performance evaluation (accuracy, loss, confusion matrix)
-* Visualization of results
-* Streamlit web app for user interaction
+| Loss curve | Validation accuracy |
+|---|---|
+| ![Loss curve](figure6_loss_curve.png) | ![Validation accuracy](figure_val_accuracy.png) |
 
 ---
 
-##  Results
+## Approach
 
-The project includes:
-
-* Training & validation accuracy graphs
-* Loss curves
-* Confusion matrix
-* Per-class performance metrics
-* Confidence distribution
+- **Dataset:** [TrashNet](https://www.kaggle.com/datasets/feyzazkefe/trashnet), six classes: cardboard, glass, metal, paper, plastic, trash
+- **Split:** 70% training, 15% validation, 15% test
+- **Model:** ResNet-18 pre-trained on ImageNet, with the convolutional layers frozen and a new classification layer trained for the six classes
+- **Augmentation:** random horizontal flips, rotation and brightness/contrast changes on the training set
+- **Training:** Adam optimiser, learning rate 0.001, batch size 32, 10 epochs; the model with the lowest validation loss is saved
+- **Evaluation:** accuracy, precision, recall, F1-score, confusion matrix and confidence distribution
 
 ---
 
-##  How to Run
+## Getting started
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
+git clone https://github.com/aniqa38/MCS-AI-Applied-Waste-Classification-System-.git
+cd MCS-AI-Applied-Waste-Classification-System-
 ```
 
 ### 2. Install dependencies
@@ -68,45 +51,64 @@ cd your-repo-name
 pip install -r requirements.txt
 ```
 
-### 3. Run the model
+### 3. Download the dataset
+
+Download TrashNet from Kaggle and place the class folders inside a folder named `dataset/`:
+
+```
+dataset/
+├── cardboard/
+├── glass/
+├── metal/
+├── paper/
+├── plastic/
+└── trash/
+```
+
+### 4. Train the model
 
 ```bash
 python app.py
 ```
 
-### 4. Run Streamlit app
+This trains the model, saves the best version as `best_waste_model.pth`, and produces the evaluation figures.
+
+### 5. Run the web app
 
 ```bash
 streamlit run streamlit_app.py
 ```
 
----
+Upload a photo of a waste item to see the predicted category and confidence.
 
-## 🧪 Test the Model
-
-Use `test.jpg` or your own image to check predictions.
+To test a single image from the command line, run `python test.py` (it uses `test.jpg`).
 
 ---
 
-## Project Structure
+## Project structure
 
-* `app.py` → Model training / prediction
-* `streamlit_app.py` → Web interface
-* `test.py` → Testing script
-* `*.png` → Result visualizations
-* `classification_report.txt` → Model evaluation
-
----
-
-##  Applications
-
-* Smart waste segregation
-* Recycling systems
-* Environmental monitoring
+| File | Purpose |
+|---|---|
+| `app.py` | Training, evaluation and figure generation |
+| `streamlit_app.py` | Web interface for predictions |
+| `test.py` | Predicts the category of a single image |
+| `classification_report.txt` | Per-class evaluation results |
+| `figure*.png` | Training and evaluation charts |
 
 ---
 
-##  Author
+## Possible improvements
 
-Developed as part of Applied AI coursework.MCS AI ( Artificial Intelligence) 
+- Fine-tune deeper ResNet layers rather than only the final layer
+- Address the class imbalance (the trash class has far fewer images), for example with weighted loss or oversampling
+- Deploy the Streamlit app publicly
 
+---
+
+## Applications
+
+Smart waste sorting, recycling systems and environmental monitoring.
+
+## Author
+
+**Aniqa Arooj**, MSc Artificial Intelligence, University of Greater Manchester

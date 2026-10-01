@@ -1,0 +1,8 @@
+# Dataset (download from Kaggle, see README)
+dataset/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
